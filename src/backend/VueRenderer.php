@@ -71,6 +71,6 @@ class VueRenderer
      */
     public function renderWithPHP()
     {
-        require '../templates/default.php';
+        require 'Template/default.php';
     }
 }
