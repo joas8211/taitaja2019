@@ -1,0 +1,23 @@
+{
+  "name": "vue-symfony-spa",
+  "version": "1.0.0",
+  "description": "Vue.js single-page application with Symfony back-end",
+  "scripts": {
+    "build": "webpack",
+    "dev": "webpack --mode development --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joas8211/vue-symfony-spa.git"
+  },
+  "author": "Jesse Sivonen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joas8211/vue-symfony-spa/issues"
+  },
+  "homepage": "https://github.com/joas8211/vue-symfony-spa#readme",
+  "devDependencies": {
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3"
+  }
+}
