@@ -43,7 +43,8 @@ class Kernel extends BaseKernel
 
         $routes->import($confDir.'/{routes}/pages.yaml', '/', 'glob')
             ->setMethods(['GET'])
-            ->setDefault('_controller', 'App\Controller\PageController::show');
+            ->setDefault('_controller', 'App\Controller\PageController::show')
+            ->setDefault('_page', true);
             
         $routes->import($confDir.'/{routes}/api.yaml', '/api', 'glob');
     }
