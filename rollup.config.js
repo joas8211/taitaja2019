@@ -6,6 +6,7 @@ import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs' 
 import VuePlugin from 'rollup-plugin-vue';
 import replace from 'rollup-plugin-replace';
+import postcss from 'rollup-plugin-postcss';
 
 const mode = 'development';
 const src = './src/frontend';
@@ -26,5 +27,6 @@ export default {
         resolve(),
         commonjs(),
         VuePlugin(),
+        postcss(),
     ],
 };

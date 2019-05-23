@@ -10,14 +10,23 @@ use App\VueRenderer;
 
 class PageController extends AbstractController
 {
+    public $vars = [];
+
     public function show(Request $request, VueRenderer $renderer)
     {
-        $routeId = $request->attributes->get('_route');
+        $routeParams = $request->attributes->get('_route_params');
+        $viewId = $routeParams['view'];
+
+        // Get logged in user
+        $this->vars['user'] = $_SESSION['user'] ?? false;
 
         // Define scripts
         $scripts = [];
         $scripts[] = [
-            'content' => 'window._page_ = ' . json_encode($routeId),
+            'content' => 'window._page_ = ' . json_encode($viewId),
+        ];
+        $scripts[] = [
+            'content' => 'window._vars_ = ' . json_encode($this->vars),
         ];
         $scripts[] = [
             'type' => 'module',
@@ -28,33 +37,5 @@ class PageController extends AbstractController
         ob_start();
         require realpath(__DIR__ . '/../Template/default.php');
         return new Response(ob_get_clean());
-    }
-
-    /**
-     * Get routes in correct format for Vue Router.
-     */
-    private function getRoutes(): array
-    {
-        $routes = [];
-
-        $routeCollection = $this->router->getRouteCollection();
-        foreach ($routeCollection as $name => $route)
-        {
-            // Do not include non-page routes.
-            if (!$route->getDefault('_page')) continue;
-
-            $path = $route->getPath();
-
-            // Replace placeholders.
-            // {name} -> :name
-            $path = preg_replace('/{(\w+)}/', ':$1', $path); 
-
-            $routes[] = [
-                'name' => $name,
-                'path' => $path,
-            ];
-        }
-
-        return $routes;
     }
 }

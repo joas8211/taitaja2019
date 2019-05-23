@@ -1,2 +1,53 @@
-index:
-    path: '/'
+index_view:
+    path: /
+    defaults:
+        view: index
+
+pepper_view:
+    path: /pepper
+    defaults:
+        view: pepper
+
+login_view:
+    path: /kirjaudu
+    controller: App\Controller\LoginController::show
+    defaults:
+        view: login
+
+login_post:
+    path: /kirjaudu
+    methods: POST
+    controller: App\Controller\LoginController::login
+    defaults:
+        view: login
+
+logout:
+    path: /kirjaudu-ulos
+    controller: App\Controller\LoginController::logout
+
+robot_control_view:
+    path: /robotin-ohjaus
+    controller: App\Controller\RobotController::show
+    defaults:
+        view: robot-control
+
+robot_control_add_function:
+    path: /robotin-ohjaus/lisaa-toiminto
+    methods: POST
+    controller: App\Controller\RobotController::addFunction
+
+robot_control_remove_function:
+    path: /robotin-ohjaus/poista-toiminto
+    methods: POST
+    controller: App\Controller\RobotController::removeFunction
+
+robot_control_execute:
+    path: /robotin-ohjaus/suorita
+    methods: POST
+    controller: App\Controller\RobotController::execute
+
+robot_info_view:
+    path: /robotin-tiedot
+    controller: App\Controller\RobotInfoController::show
+    defaults:
+        view: robot-info

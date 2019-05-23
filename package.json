@@ -24,5 +24,15 @@
     "rollup-plugin-vue": "^4.7.2",
     "vue": "^2.6.8",
     "vue-template-compiler": "^2.6.8"
+  },
+  "dependencies": {
+    "bulma": "^0.7.5",
+    "chartist": "^0.11.0",
+    "chartist-plugin-tooltip": "0.0.11",
+    "rollup-plugin-postcss": "^2.0.3",
+    "rollup-plugin-sass": "^1.2.2",
+    "vue-chartist": "^2.2.0",
+    "vue-head": "^2.1.1",
+    "vuedraggable": "^2.21.0"
   }
 }
